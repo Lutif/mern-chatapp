@@ -1,15 +1,17 @@
 //create express server
 const express =require('express')
 const app = express()
+const http = require('http').Server(app); //create http server so we can use 
+const io = require('socket.io')(http);   // use io to liseten the server 
+const router =require("./routes/router")
 
-var http = require('http').Server(app); //create http server so we can use 
-var io = require('socket.io')(http);   // use io to liseten the server 
+
+const connectDB=require("./config/connectdb")
+app.use(express.json({ useUrlExtended: false }))
+app.use(router);
 
 
-//  io.on('connection', function(socket){  console.log('user connected')})
- // socket.on('chat message', function(msg){    io.emit('chat message', msg);  });
-//  socket.on('disconnect', function(){    console.log('user disconnected');  });});
-
+/// io operations 
 let users=[]
 io.on("connect",(socket)=>{
     const user =socket.handshake.query.user
@@ -34,9 +36,10 @@ io.on("connect",(socket)=>{
     })
 })
 
-app.get('/',(req,res)=>{
-    res.send("index")
-})
+connectDB()
+
+
+
 http.listen(3001,()=>{
     console.log("server listening at port 3001")
 })

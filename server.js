@@ -5,10 +5,10 @@ const http = require('http').Server(app); //create http server so we can use
 const io = require('socket.io')(http);   // use io to liseten the server 
 const router =require("./routes/router")
 
-
 const connectDB=require("./config/connectdb")
 app.use(express.json({ useUrlExtended: false }))
 app.use(router);
+
 
 
 /// io operations 

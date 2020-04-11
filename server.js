@@ -17,7 +17,9 @@ io.on("connect",(socket)=>{
     const user =socket.handshake.query.user
     if (user!=="undefined"){
         if (users.find(usr=>usr.name==user)){ //user already exist
-            users.map(usr=>usr.name===user?({...usr,id:socket.id,ed:'prev'}):user )//replace socketid with updated 
+            users=users.map(usr=>
+                usr.name===user?({...usr,id:socket.id}):usr )//replace socketid with updated 
+            
         }
         else{
             users.push({name:user,id:socket.id})

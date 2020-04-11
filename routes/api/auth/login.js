@@ -22,7 +22,7 @@ router.post(
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        res.status(400).json(err.array());
+        res.status(400).json(errors.array());
       }
       const { email, password } = req.body;
       const user = await Users.findOne({ email });

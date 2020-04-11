@@ -9,12 +9,11 @@ const auth= (req,res, next) => {
 
     try{
     const decode = jwt.verify(token,process.env.JWT_SECRET)
-
     req.user=decode.user
 next()    
 }
     catch{
-res.send(401).json({msg:"invalid token"})
+res.status(401).json({msg:"invalid token"})
     }
 
 }

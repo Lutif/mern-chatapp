@@ -13,8 +13,7 @@ router.get("/api/users/me",[auth], async (req, res) => {
 
 try {
     const userid= req.user.id
-    console.log(req.user)
-    const user= await User.findById(userid)
+    const user= await User.findById(userid).select('-password')
     if (!user){
         return res.status(401).json([{msg:"no user found"}])
     }

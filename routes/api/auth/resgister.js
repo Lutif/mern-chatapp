@@ -5,7 +5,8 @@ const router = express.Router();
 const { check, validationResult } = require("express-validator");
 const jwt = require('jsonwebtoken')
 const gravatar = require('gravatar')
-
+const randomstring = require("randomstring");
+ 
 //@route api/users
 //@method POST
 //@access Public
@@ -38,7 +39,8 @@ check("password","Password must be six digits").isLength({min:6})
         name,
         email,
         password,
-        avatar
+        avatar,
+        verificationToken: randomstring.generate()
 
     })
 

@@ -19,6 +19,13 @@ const UserSchema = new mongoose.Schema({
     avatar:{
         type:String,
         
+    },
+    emailVerified:{
+        type:Boolean,
+        default:false
+    },
+    verificationToken:{
+        type:String
     }
 
 

@@ -39,7 +39,7 @@ All the data is saved on mongodb clustor hosted on mongoAtlas.
 The app is hosted on heroku at 
 
 ### Styling
-#### (Bootstrap)[https://github.com/twbs/bootstrap]
+#### [Bootstrap](https://github.com/twbs/bootstrap)
 Bootstrap is employed for styling
 
 ### Other back end dependencies 
